@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Load jquery -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+		<!-- Load the Paper.js library -->
+		<script type="text/javascript" src="{{ url_for('static', filename='js/paper-full.js')}}"></script>
+
+		<!-- Load external PaperScript and associate it with myCanvas -->
+		<script type="text/paperscript" src="{{ url_for('static', filename='js/gan-grid.js')}}" canvas="paperCanvas" async></script>
+	</head>
+
+	<body>
+		<h1 style="text-align:center">{{ title }}</h1>
+		<p style="text-align:center" id="message"> {{ probability }} </p>
+		<button type="button" id="queryButton">QUERY</button><br>
+		<input type="checkbox" id="guessDistribution" name="guessDistribution" value="guessDistribution"> <span>Check me if you want to draw target distribution </span>
+		<button type="button" id="guessButton">GUESS DISTRIBUTION</button>
+		<canvas id="paperCanvas" resize></canvas>
+	</body>
+</html>
+
+<style type="text/css">
+html,
+body {
+    margin: 0;
+    overflow: hidden;
+    height: 100%;
+}
+
+/* Scale canvas with resize attribute to full size */
+canvas[resize] {
+    width: 100%;
+    height: 100%;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
